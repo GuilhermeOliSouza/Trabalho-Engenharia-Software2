@@ -490,9 +490,6 @@ Label|Quant Issues|
 | d: MySQL|3|
 Observa-se a citação de duas no máximo três labels em cada issue.
 
-#### 5.4 Componente Crítico
-
-
 ## 6. Evolução do Sistema
 
 O sistema Flyway apresenta uma dinâmica de releases acentuada. Desde seu lançamento em  abril de 2010, até a última versão publicada em junho de 2016, foram mais de 15 atualizações, uma média de 3 versões/ano.
@@ -680,59 +677,58 @@ Repeatable Migrations support
 
 ## 7. Ferramentas - Frameworks e Linguagens 
 
-#### 7.1 Principais ferramentas utilizadas
-1 - GIT
-2 - JDK
-3 - JREs
-4 - MAVEN
-5 - IDE
-- Frameworks
+#### 7.1 Principais ferramentas e Linguagens utilizadas
+1 - GIT - Serviço de compatilhamento de projetos com controles de versões.Disponível em[https://github.com/flyway].
+2 - JDK -  Conjunto de utilitários que permitem criar sistemas de software para a plataforma Java.
+3 - JREs - Scripts em Java Script.  
+4 - MAVEN - É uma ferramenta de automação de compilação utilizada primariamente em projetos Java. 
 
 - Linguagens
-Java
+	A principal linguaguem do sistema é Java e scripts em Java Script.
+	As migrações podem ser escritos em SQL (sintaxe específica do banco de dados (tais como PL / SQL, T-SQL, são suportadas) ou Java (para transformações de dados avançadas).
 
-## 8. Principais Módulos, componentes e Arquitetura do Sistema
+## 8. Principais módulos, componentes e Arquitetura do Sistema.
 
 O sistema flyway possui uma arquitetura muito simples. Basicamente Flyway suporta várias ferramentas de banco de dados, entre as mais populares citamos PostgreeSQL, IBM-DB2, MySQL, SQLServer, Azure dentre outras. Ele pode ser executado como um Plugin de Maven, ou em uma API java, ou por linha de comando. Dessa forma há uma camada de suporte e integração com as ferramentas de BD e internamente a esta API de integração, há um conjunto de scripts e comandos nos módulos abaixo indicados.    
-##### 8.1 Principais Módulos e Responsabilidades
-###### API: 
+##### 8.1 Principais módulos e responsabilidades
 
-###### Migration Resolver:
+##### Migration Resolver:
+Responsável por scanear o ambiente local através do caminho das classes(class path) ou do arquivo arquivo do sistema. 
 
-###### Migration Executor:
+##### Migration Executor:
+Neste módulo os scripts inseridos no módulo resolver são executados contra a base de dados. Este módulo é responsável por mapear as regras, diferenças para serem executadas ou atualizadas.
 
-###### Metadata Table Management:
+##### Metadata Table Management:
+Neste módulo é criada uma tabela que contém o estado da base de dados e guarda os estados percorridos registrando um protocolo das alterações realizadas no banco, bem como quando  e por quem as alterações foram feitas.
 
-###### Database Specific Support:
+##### Database Specific Support: 
+É responsável por executar e processar as atualizações do banco gerando compatibilidade de uma versão para outra através de um plugin escolhido.
+
+A api disponível possibilita a integração com ambientes java, Maven, linha de comando dentre outras possibilidades de integração.
 
 ##### 8.2 Arquitetura
-A figura X  - Arquitetura do sistema demonstra uma visão geral da arquitetura do sistema.
+A figura abaixo  apresenta uma visão geral da arquitetura do sistema. Demonstra os módulos existentes.
  
 ![](https://i.imgur.com/4S4Xuhz.jpg)
-Figura X - Arquitetura do Sistema.
+Figura- Arquitetura do Sistema.
 
 Os componentes mais relevantes identificados foram:
 
-|Componente | Descrição|
+|Componente | Contém Pacotes|
 |-----------|-----------|
-|Core       | 
-|
-|
-|
-|
-Estou tentando uma forma de fazer a descrição dos componentes mas isso é bem dificil, alguém tem alguma ideia ? 
-Fabiano: Acho que não deveriamos descrever. Vai ser trabalhoso e já temos muita coisa escrita.
+|Core       | Main / Test
+|SBT	|Project / Sbt
+|Ant_Largestest| Test
+|Flyway_ant|Main / Assembly
 
-
-
+Observa-se que a estruturação dos componentes são praticamente todos dependentes do pacote core, e para cada ferramenta que a API suporta há um pacote relacionado ao core e especifico para cada plugin ex. pacote para o integração com Maven - pacote flyway-maven que contem sub pacote project e main, flyway-gradle-plugin que contém os pacotes main e test e assim sucessivamente para cada plugim associado a API.
 
 ##### 8.3 Diagramas
+
+O diagrama abaixo apresenta maiores detalhes do plugin flyway-commandline. Este pacote também segue a mesma estrutura com um pacote Main e um pacote para testes, utilizado para validação da Main. 
+
 ![](https://i.imgur.com/N02gIWz.jpg)
 <sup><sub>**Diagrama de Classe do arquivo .jar de linha de comando**</sub></sup>
-
-
-<sup><sub>**Diagrama de Classe do arquivo .jar de core**</sub></sup>
-
 
 
 
@@ -742,6 +738,11 @@ Fabiano: Acho que não deveriamos descrever. Vai ser trabalhoso e já temos muit
 3 - [http://www.linhadecodigo.com.br/artigo/3343/como-documentar-a-arquitetura-de-      software.aspx], consulta em 06/10/2016.
 4 - [https://vimeo.com/74437803], consulta em 12/10/2016.
 5 - [http://blog.novatec-gmbh.de/flyway-database-migrations-made-easy/], consulta     em 08/10/2016. 
+6 - [https://flywaydb.org/], consulta em 06/12/2016.
+7 -[http://imasters.com.br/banco-de-dados/mysql/automatizando-seu-banco-de-dados-com-o-plugin-flyway/?trace=1519021197&source=single], consulta em 08/10/2016.
+8 - [http://pt.slideshare.net/kaunasjug/flyway-37147905], consulta em 09/10/2016.
+9 - [https://flywaydb.org/documentation/faq.html#multiple-schemas], consulta em 12/10/2016.
+10 -[https://www.youtube.com/watch?v=N0Qce1e46Lo], consulta em 12/10/2016.
 
 
 

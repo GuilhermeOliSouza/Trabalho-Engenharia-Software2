@@ -19,8 +19,6 @@ As migrações podem ser codificadas utilizando-se _sintaxes de SQL_ específica
 
 Recomenda-se utilizar a máquina virtual Java _(JVM)_ para a execução do processo de migração da base de dados no início da aplicação. Contudo, o sistema funciona também através dos plugins _Maven, Gradle e SBT_, além de tarefas _Ant_. Há diversos outros plugins disponíveis na [página do desenvolvedor](https://flywaydb.org/documentation/plugins).
 
-[^1]:[Introduction to LOBs](https://docs.oracle.com/cd/B10501_01/appdev.920/a96591/adl01int.htm)
-
 ## 3. Como Funciona
 O Flyway tem como objetivo a criação e gerenciamento de tabelas de metadados de um banco de dados relacional. O exemplo mais simples é quando se tem um banco de dados vazio: a ferramenta tenta localizar a tabela de metadados do banco de dados; não sendo possível encontrá-la, o Flyway criará essa tabela de metadados.
 

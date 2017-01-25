@@ -5,11 +5,11 @@
 ![Logo](https://i.imgur.com/q0xCcAI.png)
 
 ## 1. Introdução
-Sistemas de banco de dados desempenham papeis fundamentais no funcionamento das organizações. Sua utilização ao abrigar todos os dados históricos e operacionais possibilitam e auxiliam nas tomadas de decisões e no alcance dos objetivos do empreendimento. Um banco de dados tem que fornecer informações confiáveis e atualizadas aos "_steakholders_" e, para tanto, é necessário que haja apenas uma versão atualizada em todas as instâncias nas quais esteja em funcionamento.
+Sistemas de banco de dados desempenham papéis fundamentais no funcionamento das organizações. Sua utilização ao abrigar todos os dados históricos e operacionais possibilitam e auxiliam nas tomadas de decisões e no alcance dos objetivos do empreendimento. Um banco de dados tem que fornecer informações confiáveis e atualizadas aos "_steakholders_" e, para tanto, é necessário que haja apenas uma versão atualizada em todas as instâncias nas quais esteja em funcionamento.
 
 Na construção de sistemas é observado que as equipes de desenvolvimento e os engenheiros de software têm maior cuidado de manter as versões dos projetos atualizadas e sincronizadas entre si, normalmente eles contam com excelentes ferramentas de controle de versão, integração contínua entre as equipes e processos de implantação e lançamentos bem definidos. 
 
-Contudo, o que é possível dizer sobre a estrutura de um banco de dados no desenvolvimento do sistema? É visto que nem sempre há a preocupação e o cuidado em verificar, ajustar  a versão do sistema de banco de dados que as equipes estão utilizando. A ausência de ferramentas que possibilitam verificar: o estado de um banco de dados, a aplicação de determinado script no banco, uma correção de erro a ser submetida em testes posteriores ou configuração de nova instância de um banco de dados,tudo isso, dificulta e consome muito tempo para o controle adequado e atualização do versionamento dos bancos, por exemplo no desenvolvimento de sistemas complexos. Disso, decorre a necessidade de utilizar-se a **migração do banco de dados** de uma determinada versão para outra, mais nova, a fim de _reaver o controle_ e a _organização dos dados_.
+Contudo, o que é possível dizer sobre a estrutura de um banco de dados no desenvolvimento do sistema? É visto que nem sempre há a preocupação e o cuidado em verificar, ajustar  a versão do sistema de banco de dados que as equipes estão utilizando. A ausência de ferramentas que possibilitam verificar: o estado de um banco de dados, a aplicação de determinado script no banco, uma correção de erro a ser submetida em testes posteriores ou configuração de nova instância de um banco de dados, tudo isso, dificulta e consome muito tempo para o controle adequado e atualização do versionamento dos bancos, por exemplo, no desenvolvimento de sistemas complexos. Disso, decorre a necessidade de utilizar-se a **migração do banco de dados** de uma determinada versão para outra, mais nova, a fim de _reaver o controle_ e a _organização dos dados_.
 
 ## 2. O Sistema Flyway - Visão Geral
 O _Flyway_ é uma ferramenta de código aberto multiplataforma e colaborativa utilizada para a migração de banco de dados relacionais de forma simplificada, criando-se convenções com base em versionamento. Escrita em _**Java**_, funciona através de instruções em linha de comando contendo seis operações básicas para migração, limpeza, obtenção de informações, validar, _"baseline"_ e reparo do banco de dados.
@@ -22,7 +22,7 @@ Recomenda-se utilizar a máquina virtual Java _(JVM)_ para a execução do proce
 [^1]:[Introduction to LOBs](https://docs.oracle.com/cd/B10501_01/appdev.920/a96591/adl01int.htm)
 
 ## 3. Como Funciona
-O Flyway tem como objetivo a criação e gereciamento de tabelas de metadados de um banco de dados relacional. O exemplo mais simples é quando se tem um banco de dados vazio: a ferramenta tenta localizar a tabela de metadados do banco de dados; não sendo possível encontrá-la, o Flyway criará essa tabela de metadados.
+O Flyway tem como objetivo a criação e gerenciamento de tabelas de metadados de um banco de dados relacional. O exemplo mais simples é quando se tem um banco de dados vazio: a ferramenta tenta localizar a tabela de metadados do banco de dados; não sendo possível encontrá-la, o Flyway criará essa tabela de metadados.
 
 ![Exemplo de criação de um banco de dados vazio no Flyway](https://i.imgur.com/6GyCTYe.png)
 <sub><sup>_**Exemplo de criação de um banco de dados vazio no Flyway**_</sup></sub>
@@ -34,7 +34,7 @@ Por padrão, será criado um banco de dados com uma tabela vazia nomeada como _S
 <sub><sup>_**Banco de dados vazio nomeado por padrão como SCHEMA_VERSION**_</sup></sub>
 
 
-Após a criação da tabela, o Flyway efetua um _**scan**_ do sistema de arquivos ou do _classpath_ da aplicação para executar as _**migrações**_. Essas rotinas podem ser escritas em SQL ou Java. As migrações são **classificadas** com base em seu **número de versão** e aplicadas de forma ordenada, gerando uma atualização na tabela de metadados ao passo da aplicaçãod e cada migração, conforme exemplo na tabela a seguir:
+Após a criação da tabela, o Flyway efetua um _**scan**_ do sistema de arquivos ou do _classpath_ da aplicação para executar as _**migrações**_. Essas rotinas podem ser escritas em SQL ou Java. As migrações são **classificadas** com base em seu **número de versão** e aplicadas de forma ordenada, gerando uma atualização na tabela de metadados ao passo da aplicação de cada migração, conforme exemplo na tabela a seguir:
 
 | installed_rank | version | description   | type | script                | checksum   | installed_by | installed_on          | execution_time | success |
 |----------------|---------|---------------|------|-----------------------|------------|--------------|-----------------------|----------------|---------|
@@ -69,7 +69,7 @@ Por tratar-se de uma ferramenta de execução por linha de comando, não há a n
 
 #### Configuração
 
-Após extração dos arquivos, é necessário configurar o Flyway editando o arquivo ```/conf/flyway.conf```  conforme exemplo abaixo:
+Após extração dos arquivos é necessário configurar o Flyway editando o arquivo ```/conf/flyway.conf```  conforme exemplo abaixo:
 
 >\# MySQL: jdbc:mysql://<host>:<port>/<database>?
 >flyway.url=```jdbc:mysql://serverName:port/database?autoReconnect=false&useSSL=false```
@@ -82,7 +82,7 @@ Após extração dos arquivos, é necessário configurar o Flyway editando o arq
 
 #### Criação da primeira migração
 
-A primeira migração da base de dados vazia é possível ser criada no diretório ```/sql``` a qual, nesse exmeplo, é dado o nome ```V1_Create_person_table.sql```. 
+A primeira migração da base de dados vazia é possível ser criada no diretório ```/sql``` a qual, neste exmeplo, é dado o nome ```V1_Create_person_table.sql```. 
 
 ```sql=
 create table PERSON (
@@ -113,11 +113,11 @@ insert into PERSON (ID, NAME) values (1, 'Axel');
 insert into PERSON (ID, NAME) values (2, 'Mr. Foo');
 insert into PERSON (ID, NAME) values (3, 'Ms. Bar');
 ```
-e executar nvoamente o comando de migração:
+e executar novamente o comando de migração:
 ```shell
 flyway-4.0.3> flyway migrate
 ```
-obtem-se como resultado:
+obtém-se como resultado:
 ```sh
 Current version of schema "PUBLIC": 1
 Migrating schema "PUBLIC" to version 2 - Add people
@@ -143,7 +143,7 @@ Neste tópico, reproduzimos um caso de uso de um tutorial disponível no blog [N
 
 #### 4.2.1 Integração das dependências do Flyway
 
-A utilização do Maven facilita o gerenciamento de bibliotecas de terceiros. A dependência _'flyway-core'_ com a última versão deve ser incluída aos arquivos do projeto _'pom'_, se necessário uma migração de base de dados com classes Java, confome o trecho de código abaixo:
+A utilização do Maven facilita o gerenciamento de bibliotecas de terceiros. A dependência _'flyway-core'_ com a última versão utilizada deve ser incluída aos arquivos do projeto em _'pom'_, e se necessário uma migração de base de dados com classes Java, conforme o trecho de código abaixo exemplifica:
 ```xml=
 <dependency>
 	<groupId>org.flywaydb</groupId>
@@ -182,7 +182,7 @@ Para executar uma migração no processo de construção, é importante adiciona
 
 Partindo-se do pressuposto da não existência da tabela ```SCHEMA_VERSION```, o Flyway procederá conforme os passos _descritos no **item 3**_ para a criação da tabela de metadados. Caso haja a base de dados sem, contudo, ter sido preenchida pelo Flyway, basta proceder conforme segue:
 
-Primeiramente, criando e salvando um _"snapshot"_ ou um script de migração da base de dados existente que recriará o atual estado da base de dados. Logo após, é necessário a abertura do _shell_, navegar até o diretório da amostra do projeto e executar o seguinte comando:
+Primeiramente, criando e salvando um _"snapshot"_ ou um script de migração da base de dados existente que recriará o atual estado da base de dados. Logo após, é necessário abrir o _shell_, navegar até o diretório da amostra do projeto e executar o seguinte comando:
 
 ```sh
 mvn flyway:clean
@@ -331,7 +331,7 @@ public Flyway flyway() {
 	return flyway;
 }
 ```
-Nesse contexto, foi iniciada a classe ```Flyway``` e inicializado ```dataSource``` com um _"setter"_. Com ```setLocations``` foi definido o caminho do pacote que contém os arquivos de migração Java. Durante a migração, o Flyway checa se todos os arquivos migrados estão disponíveis. Para o processo implícito de migração, é importante ```initMethod=migrate``` como propriedade _bean_. Essa configuração garante que o Flyway cheque a versão da base de dados e migre para um novo estado enquanto fa o _bootstrap_ da aplicação.
+Nesse contexto, foi iniciada a classe ```Flyway``` e inicializado ```dataSource``` com um _"setter"_. Com ```setLocations``` foi definido o caminho do pacote que contém os arquivos de migração Java. Durante a migração, o Flyway checa se todos os arquivos migrados estão disponíveis. Para o processo implícito de migração, é importante ```initMethod=migrate``` como propriedade _bean_. Essa configuração garante que o Flyway cheque a versão da base de dados e migre para um novo estado enquanto faz o _bootstrap_ da aplicação.
 
 Para garantir que ```EntityManagerFactoryBean``` inicie após a migração, usa-se a anotação ```@DependsOn(“flyway”)```. O próximo trecho de código mostra a classe de configuração editada.
 
@@ -351,7 +351,7 @@ public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean() {
 
 #### 4.2.4 Criação do arquivo de migração do tipo Java
 
-As migrações Java possuem as mesmas convenções de nomes dados aos scripts de migração SQL. Devem ser espcificados como um nome de classe. Cada classe de migração Java deve implementar a interface ```JdbcMigration```. Abaixo segue um trecho de código  de uma classe de migração implementada corretamente.
+As migrações Java possuem as mesmas convenções de nomes dados aos scripts de migração SQL. Devem ser especificados como um nome de classe. Cada classe de migração Java deve implementar a interface ```JdbcMigration```. Abaixo segue um trecho de código  de uma classe de migração implementada corretamente.
 
 ```java=
 package info.novatec.eap.persistence.migration;
@@ -395,9 +395,8 @@ public class V2_1__addDataToCustomer implements SpringJdbcMigration {
 
 #### 4.2.5 Execução
 
-Uma migração é executada se necessário, enquanto é executado o _bootstrap_ da aplicação. Um segundo ponto chave, como descrito no item anterior, foi implementado pelo autor.
-
-Maven também executa migrações de classe Java. Para esse propósito, é necessário ajustar o plugin ```flyway-maven```. Um segundo local com o nome do pacote que foi criado antes deve ser adicionado. O próximo trecho de código mostra como isso foi definido:
+Uma migração ou versionamento é executada, se necessário , enquanto é executado o _bootstrap_ da aplicação. 
+Maven também executa migrações de classes em Java. Para esse propósito, é necessário ajustar o plugin ```flyway-maven```. Um segundo local com o nome do pacote que foi criado antes deve ser adicionado. O próximo trecho de código mostra como isso foi definido:
 
 ```xml=
 <plugin>
@@ -463,7 +462,7 @@ Outra forma de colaborar é melhorar o site da ferramenta que também está disp
 
 #### 5.2 Issues
 Ao encontar um bug do sistema é preciso abrir uma issue, relatando o ocorrido e para isso deve-se indicar: 
- - SO utilizado, como foi a execução do flyway até encontrar o bug, versão utilizada, é indispensável avaliar se outro colaborardor já relatou o  mesmo problema. Caso encontre um relato do mesmo problema basta apenas incrementar o comentário indicando mais 1 para o problema observado.
+ - SO utilizado, como foi a execução do flyway até encontrar o bug e versão utilizada, é indispensável avaliar se outro colaborardor já relatou o  mesmo problema. Caso encontre um relato do mesmo problema basta apenas incrementar o comentário indicando mais 1 para o problema observado.
 
 Já foram abertas 1226 issues, sendo 1038 issues finalizadas ou fechadas e 188 ainda abertas. 
 
@@ -543,7 +542,7 @@ Veja abaixo, lista das principais alterações retiradas do site do flyway.
 - Issue 30: migrações Java agora são baseados em interfaces em vez de herança. O existente BaseJavaMigration classe foi preterido e adaptados a este novo modelo.
 
 ##### Correções de bugs
- - Corrigido indice da versão atual no Oracle.
+ - Corrigido índice da versão atual no Oracle.
  - parsing fixa de CREATE FUNCTION e instruções CREATE PROCEDURE em PL / SQL.
 - Corrigido um bug no Oracle SQL Analisador que causou o tropeço de nomes das colunas que começam com 'começar'.
 - Definir a fonte de dados antes do nome da mesma estava causando um erro. Isso também afetou o plugin Maven.
@@ -565,7 +564,7 @@ Veja abaixo, lista das principais alterações retiradas do site do flyway.
 - Issue 116: Suporte ao Java 5.
 - Issue 136: Suporte para as credenciais do servidor de settings.xml (plugin Maven).
 
-##### Alterarações
+##### Alterações
 - Flyway agora é testado com o MySQL versão 5.1 (acima de 5,0).
 
 ##### Correções de bugs
@@ -704,7 +703,7 @@ Neste módulo é criada uma tabela que contém o estado da base de dados e guard
 ##### Database Specific Support: 
 É responsável por executar e processar as atualizações do banco gerando compatibilidade de uma versão para outra através de um plugin escolhido.
 
-A api disponível possibilita a integração com ambientes java, Maven, linha de comando dentre outras possibilidades de integração.
+A API disponível possibilita a integração com ambientes java, Maven, linha de comando dentre outras possibilidades de integração.
 
 ##### 8.2 Arquitetura
 A figura abaixo  apresenta uma visão geral da arquitetura do sistema. Demonstra os módulos existentes.
@@ -721,7 +720,7 @@ Os componentes mais relevantes identificados foram:
 |Ant_Largestest| Test
 |Flyway_ant|Main / Assembly
 
-Observa-se que a estruturação dos componentes são praticamente todos dependentes do pacote core, e para cada ferramenta que a API suporta há um pacote relacionado ao core e especifico para cada plugin ex. pacote para o integração com Maven - pacote flyway-maven que contem sub pacote project e main, flyway-gradle-plugin que contém os pacotes main e test e assim sucessivamente para cada plugim associado a API.
+Observa-se que a estruturação dos componentes são praticamente todos dependentes do pacote core, e para cada ferramenta que a API suporta há um pacote relacionado ao core e específico para cada plugin ex. pacote para o integração com Maven - pacote flyway-maven que contém sub pacote project e main, flyway-gradle-plugin que contém os pacotes main e test e assim sucessivamente para cada plugin associado a API.
 
 ##### 8.3 Diagramas
 
